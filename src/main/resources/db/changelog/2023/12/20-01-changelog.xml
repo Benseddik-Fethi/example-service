@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.19.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1703070448083-1" author="fethi (generated)">
+        <createSequence incrementBy="1" sequenceName="address_seq" startValue="1000"/>
+    </changeSet>
+    <changeSet id="1703070448083-2" author="fethi (generated)">
+        <createSequence incrementBy="1" sequenceName="user_seq" startValue="1000"/>
+    </changeSet>
+    <changeSet id="1703070448083-3" author="fethi (generated)">
+        <createTable tableName="address">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_address"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column name="uuid" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="street" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="zip" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1703070448083-4" author="fethi (generated)">
+        <createTable tableName="users">
+            <column name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
+            </column>
+            <column name="created_by" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="DATETIME"/>
+            <column name="last_modified_by" type="VARCHAR(50)"/>
+            <column name="last_modified_date" type="DATETIME"/>
+            <column name="uuid" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birth_date" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1703070448083-5" author="fethi (generated)">
+        <addUniqueConstraint columnNames="uuid" constraintName="uc_address_uuid" tableName="address"/>
+    </changeSet>
+    <changeSet id="1703070448083-6" author="fethi (generated)">
+        <addUniqueConstraint columnNames="uuid" constraintName="uc_users_uuid" tableName="users"/>
+    </changeSet>
+    <changeSet id="1703070448083-7" author="fethi (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="address" constraintName="FK_ADDRESS_ON_USER"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1703070448083-load-data" author="fethi">
+        <loadData tableName="users" file="db/fake-data/user.csv" separator=";"/>
+        <loadData tableName="address" file="db/fake-data/address.csv" separator=";"/>
+    </changeSet>
+</databaseChangeLog>

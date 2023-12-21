@@ -1,0 +1,6 @@
+id;uuid;street;city;state;zip;country;user_id;created_by;last_modified_by
+1;67937fcd-a19e-4347-96f6-4012a103d501;Emmet;Maubeuge;Nord-Pas-de-Calais;59604;France;1;system;system
+2;5de5c254-0a10-439c-b988-c66fdedaad36;Arizona;Marcq-en-Barœul;Nord-Pas-de-Calais;59704;France;1;system;system
+3;97523f91-5ba2-40e7-8178-9a177d1ef371;Alpine;Lille;Nord-Pas-de-Calais;59049;France;2;system;system
+4;71965840-20fb-44fd-afaa-8ad8e3841a32;Aberg;Croix;Nord-Pas-de-Calais;59961;France;3;system;system
+5;8b3d8461-d022-4f1e-8ad4-90cd1e42d1b2;Kenwood;Arras;Nord-Pas-de-Calais;62070;France;4;system;system
