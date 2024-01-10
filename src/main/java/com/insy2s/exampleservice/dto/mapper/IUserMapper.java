@@ -1,9 +1,9 @@
 package com.insy2s.exampleservice.dto.mapper;
 
 import com.insy2s.exampleservice.domain.User;
+import com.insy2s.exampleservice.dto.request.UserPersonalUpdateRequest;
 import com.insy2s.exampleservice.dto.request.UserRequest;
 import com.insy2s.exampleservice.dto.response.UserResponse;
-import com.insy2s.exampleservice.dto.request.UserPersonalUpdateRequest;
 import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING, uses = {IAddressMapper.class})

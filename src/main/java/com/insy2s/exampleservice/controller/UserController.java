@@ -1,13 +1,11 @@
 package com.insy2s.exampleservice.controller;
 
+import com.insy2s.exampleservice.dto.request.UserPersonalUpdateRequest;
 import com.insy2s.exampleservice.dto.request.UserRequest;
 import com.insy2s.exampleservice.dto.response.UserResponse;
 import com.insy2s.exampleservice.service.IUserService;
-import com.insy2s.exampleservice.dto.request.UserPersonalUpdateRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
