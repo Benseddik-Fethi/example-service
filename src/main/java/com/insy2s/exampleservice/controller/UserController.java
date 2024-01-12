@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-
 /**
  * The UserController class is a REST controller that handles user-related API requests.
  */
@@ -41,14 +40,11 @@ public class UserController {
             description = "Retrieve all users",
             summary = "Fetches a list of all users in the database",
             responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Successfully retrieved list"
-                    )
+                    @ApiResponse(responseCode = "200", description = "Successfully retrieved list")
             }
     )
     @GetMapping
-    public ResponseEntity<List<UserResponse>>findAll(){
+    public ResponseEntity<List<UserResponse>> findAll() {
         log.debug("REST request to get all users");
         return ResponseEntity.ok(userService.findAll());
     }
@@ -65,24 +61,20 @@ public class UserController {
             description = "Find user by UUID",
             summary = "Provides detailed information about a user with the specified UUID",
             responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Successfully retrieved user"
-                    ),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "User not found"
-                    )
+                    @ApiResponse(responseCode = "200", description = "Successfully retrieved user"),
+                    @ApiResponse(responseCode = "404", description = "User not found")
             }
     )
     @GetMapping("/{uuid}")
-    public ResponseEntity<UserResponse> findById(@Parameter(description = "UUID of the user to be obtained")@PathVariable UUID uuid){
+    public ResponseEntity<UserResponse> findById(
+            @Parameter(description = "UUID of the user to be obtained") @PathVariable final UUID uuid) {
         log.debug("REST request to get user by uuid {}", uuid);
         return ResponseEntity.ok(userService.findById(uuid));
     }
 
     /**
      * Save a user.
+     *
      * @param userRequest The UserRequest object representing the user to save.
      * @return {@code 200} The saved user or {@code 400} if the user is not valid.
      * @author Fethi Benseddik
@@ -91,18 +83,12 @@ public class UserController {
             description = "Save a user",
             summary = "Saves the provided user details to the database",
             responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Successfully saved user"
-                    ),
-                    @ApiResponse(
-                            responseCode = "400",
-                            description = "User is not valid"
-                    )
+                    @ApiResponse(responseCode = "200", description = "Successfully saved user"),
+                    @ApiResponse(responseCode = "400", description = "User is not valid")
             }
     )
     @PostMapping
-    public ResponseEntity<UserResponse> save(@RequestBody @Valid UserRequest userRequest){
+    public ResponseEntity<UserResponse> save(@RequestBody @Valid final UserRequest userRequest) {
         log.debug("REST request to save user {}", userRequest);
         return ResponseEntity.ok(userService.save(userRequest));
     }
@@ -119,18 +105,13 @@ public class UserController {
             summary = "Delete a user by UUID",
             description = "Deletes a user with the specified UUID from the database",
             responses = {
-                    @ApiResponse(
-                            responseCode = "204",
-                            description = "User successfully deleted"
-                    ),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "User not found"
-                    )
+                    @ApiResponse(responseCode = "204", description = "User successfully deleted"),
+                    @ApiResponse(responseCode = "404", description = "User not found")
             }
     )
     @DeleteMapping("/{uuid}")
-    public ResponseEntity<Void> deleteById(@Parameter(description = "UUID of the user to be deleted") @PathVariable UUID uuid){
+    public ResponseEntity<Void> deleteById(
+            @Parameter(description = "UUID of the user to be deleted") @PathVariable final UUID uuid) {
         log.debug("REST request to delete user by uuid {}", uuid);
         userService.deleteByUuid(uuid);
         return ResponseEntity.noContent().build();
@@ -150,23 +131,15 @@ public class UserController {
             summary = "Update a user",
             description = "Updates user data for a user with the given UUID",
             responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "User successfully updated"
-                    ),
-                    @ApiResponse(
-                            responseCode = "400",
-                            description = "Invalid user data"
-                    ),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "User not found"
-                    )
+                    @ApiResponse(responseCode = "200", description = "User successfully updated"),
+                    @ApiResponse(responseCode = "400", description = "Invalid user data"),
+                    @ApiResponse(responseCode = "404", description = "User not found")
             }
     )
     @PatchMapping("/{uuid}")
-    public ResponseEntity<UserResponse> updateUser(@Parameter(description = "UUID of the user to be updated") @PathVariable UUID uuid,
-                                                   @RequestBody @Valid UserPersonalUpdateRequest request) {
+    public ResponseEntity<UserResponse> updateUser(
+            @Parameter(description = "UUID of the user to be updated") @PathVariable final UUID uuid,
+            @RequestBody @Valid final UserPersonalUpdateRequest request) {
         log.debug("REST request to update user {} {}", uuid, request);
         return ResponseEntity.ok(userService.updateUser(uuid, request));
     }

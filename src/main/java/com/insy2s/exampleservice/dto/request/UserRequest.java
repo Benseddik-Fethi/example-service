@@ -11,7 +11,12 @@ import java.util.Set;
 /**
  * DTO for {@link com.insy2s.exampleservice.domain.User}
  */
-public record UserRequest(@NotBlank String firstName, @NotBlank String lastName,
-                          @NotNull(message = "La date de naissance ne peut pas etre vide") @Past LocalDate birthDate,
-                          Set<IAddressRequest> addresses) implements Serializable {
+public record UserRequest(
+        @NotBlank
+        String firstName,
+        @NotBlank String lastName,
+        @NotNull(message = "La date de naissance ne peut pas etre vide")
+        @Past LocalDate birthDate,
+        Set<IAddressRequest> addresses
+) implements Serializable {
 }

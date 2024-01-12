@@ -18,13 +18,11 @@ import java.io.Serializable;
 import java.time.Instant;
 
 
-
 /**
  * AbstractAuditingEntity is an abstract class that provides auditing functionality for entities.
  * It defines common fields for auditing such as createdBy, createdDate, lastModifiedBy, lastModifiedDate.
  * The class is annotated with @MappedSuperclass, which allows the fields in this class
  * to be inherited by subclasses without creating their own database table.
- *
  */
 @Getter
 @Setter

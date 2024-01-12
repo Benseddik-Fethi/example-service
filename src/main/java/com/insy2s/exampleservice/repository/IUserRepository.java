@@ -8,9 +8,9 @@ import java.util.UUID;
 
 public interface IUserRepository extends JpaRepository<User, Integer> {
 
-
     /**
      * Retrieves a user by uuid.
+     *
      * @param uuid The uuid of the user to retrieve.
      * @return A User object representing the user.
      */

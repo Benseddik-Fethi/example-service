@@ -10,6 +10,7 @@ import com.insy2s.exampleservice.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -19,6 +20,7 @@ import static com.insy2s.exampleservice.error.record.ErrorMessage.USER_NOT_FOUND
 @Slf4j
 @RequiredArgsConstructor
 @Service
+@Transactional
 public class UserServiceImpl implements IUserService {
 
     private final IUserRepository userRepository;
@@ -29,6 +31,7 @@ public class UserServiceImpl implements IUserService {
      * {@inheritDoc}
      */
     @Override
+    @Transactional(readOnly = true)
     public List<UserResponse> findAll() {
         return userRepository.findAll()
                 .stream()
@@ -40,7 +43,8 @@ public class UserServiceImpl implements IUserService {
      * {@inheritDoc}
      */
     @Override
-    public UserResponse findById(UUID uuid) {
+    @Transactional(readOnly = true)
+    public UserResponse findById(final UUID uuid) {
         return userRepository.findByUuid(uuid)
                 .map(userMapper::toDto)
                 .orElseThrow(() -> new UserNotFoundException(USER_NOT_FOUND));
@@ -50,7 +54,7 @@ public class UserServiceImpl implements IUserService {
      * {@inheritDoc}
      */
     @Override
-    public UserResponse save(UserRequest userRequest) {
+    public UserResponse save(final UserRequest userRequest) {
         return userMapper.toDto(userRepository.save(userMapper.toEntity(userRequest)));
     }
 
@@ -58,7 +62,7 @@ public class UserServiceImpl implements IUserService {
      * {@inheritDoc}
      */
     @Override
-    public void deleteByUuid(UUID uuid) {
+    public void deleteByUuid(final UUID uuid) {
         var user = userRepository.findByUuid(uuid)
                 .orElseThrow(() -> new UserNotFoundException(USER_NOT_FOUND));
         userRepository.delete(user);
@@ -68,7 +72,7 @@ public class UserServiceImpl implements IUserService {
      * {@inheritDoc}
      */
     @Override
-    public UserResponse updateUser(UUID uuid, UserPersonalUpdateRequest request) {
+    public UserResponse updateUser(final UUID uuid, final UserPersonalUpdateRequest request) {
         var user = userRepository.findByUuid(uuid)
                 .orElseThrow(() -> new UserNotFoundException(USER_NOT_FOUND));
         user = userMapper.partialUpdate(request, user);

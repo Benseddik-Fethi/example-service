@@ -11,6 +11,12 @@ import java.util.UUID;
 /**
  * DTO for {@link com.insy2s.exampleservice.domain.User}
  */
-public record UserResponse(UUID uuid, @NotBlank String firstName, @NotBlank String lastName, @Past LocalDate birthDate,
-                           Set<AddressResponse> addresses) implements Serializable {
+public record UserResponse(
+        UUID uuid,
+        @NotBlank
+        String firstName,
+        @NotBlank String lastName,
+        @Past LocalDate birthDate,
+        Set<AddressResponse> addresses
+) implements Serializable {
 }

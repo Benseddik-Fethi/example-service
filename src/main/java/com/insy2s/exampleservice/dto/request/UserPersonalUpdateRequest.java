@@ -10,7 +10,12 @@ import java.util.Set;
 /**
  * DTO for {@link com.insy2s.exampleservice.domain.User}
  */
-public record UserPersonalUpdateRequest(@NotBlank String firstName, @NotBlank String lastName,
-                                        @Past LocalDate birthDate,
-                                        Set<AddressUpdateRequest> addresses) implements Serializable {
+public record UserPersonalUpdateRequest(
+        @NotBlank
+        String firstName,
+        @NotBlank
+        String lastName,
+        @Past LocalDate birthDate,
+        Set<AddressUpdateRequest> addresses
+) implements Serializable {
 }

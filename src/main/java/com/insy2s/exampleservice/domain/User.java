@@ -54,6 +54,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private LocalDate birthDate;
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
+    @ToString.Exclude
     private Set<Address> addresses = new LinkedHashSet<>();
 
     @PrePersist

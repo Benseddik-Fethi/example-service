@@ -6,7 +6,11 @@ import com.insy2s.exampleservice.dto.request.UserRequest;
 import com.insy2s.exampleservice.dto.response.UserResponse;
 import org.mapstruct.*;
 
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = MappingConstants.ComponentModel.SPRING, uses = {IAddressMapper.class})
+@Mapper(
+        unmappedTargetPolicy = ReportingPolicy.IGNORE,
+        componentModel = MappingConstants.ComponentModel.SPRING,
+        uses = {IAddressMapper.class}
+)
 public interface IUserMapper {
     User toEntity(UserResponse userResponse);
 

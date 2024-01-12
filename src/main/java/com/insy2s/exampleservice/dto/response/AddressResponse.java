@@ -9,7 +9,18 @@ import java.util.UUID;
 /**
  * DTO for {@link com.insy2s.exampleservice.domain.Address}
  */
-public record AddressResponse(@NotNull UUID uuid, @NotBlank String street, @NotBlank String city,
-                              @NotBlank String state, @NotBlank String zip,
-                              @NotBlank String country) implements Serializable {
+public record AddressResponse(
+        @NotNull
+        UUID uuid,
+        @NotBlank
+        String street,
+        @NotBlank
+        String city,
+        @NotBlank
+        String state,
+        @NotBlank
+        String zip,
+        @NotBlank
+        String country
+) implements Serializable {
 }

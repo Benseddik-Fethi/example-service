@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 
 /**
  * This interface represents an exception that includes an error response.
+ *
  * @author Fethi Benseddik
  */
 public interface ExceptionWithErrorResponse {
